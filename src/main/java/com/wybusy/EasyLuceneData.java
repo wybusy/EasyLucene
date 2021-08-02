@@ -1,11 +1,11 @@
 package com.wybusy;
 
 public class EasyLuceneData {
-    private String id;
-    private String content;
-    private String json;
-    private String highLightContent;
-    private Float score;
+    public String id;
+    public String content;
+    public String json;
+    public String highLightContent;
+    public Float score;
 
     public String getId() {
         return id;
