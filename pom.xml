@@ -11,7 +11,7 @@
   <packaging>jar</packaging>
 
   <name>EasyLucene</name>
-  <description>User manage system written in Java</description>
+  <description>Lucene written in Java</description>
   <url>https://wybusy.com</url>
 
   <properties>
