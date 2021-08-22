@@ -5,7 +5,7 @@ public class EasyLuceneData {
     public String content;
     public String json;
     public String highLightContent;
-    public Float score;
+    public double score;
 
     public String getId() {
         return id;
@@ -39,11 +39,11 @@ public class EasyLuceneData {
         this.highLightContent = highLightContent;
     }
 
-    public Float getScore() {
+    public double getScore() {
         return score;
     }
 
-    public void setScore(Float score) {
+    public void setScore(double score) {
         this.score = score;
     }
 }

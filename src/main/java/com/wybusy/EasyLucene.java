@@ -208,8 +208,24 @@ public class EasyLucene {
         }
         return result;
     }
+    public List<EasyLuceneData> similarity(String inputText, List<EasyLuceneData> find) {
+        for(EasyLuceneData item: find) {
+            item.score = similarity(inputText, item.content);
+        }
+        return sort(find);
+    }
 
+    public List<EasyLuceneData> sort(List<EasyLuceneData> result) {
+        Collections.sort(result, new Comparator<EasyLuceneData>() {
+            @Override
+            public int compare(EasyLuceneData o1, EasyLuceneData o2) {
+                return (int) (o1.score - o2.score);
+            }
+        });
+        return result;
+    }
     public String textToWord(String text) {
+        text = text.replaceAll("/", "");
         QueryParser parser = new QueryParser("", analyzer);
         String result = "";
         try {
