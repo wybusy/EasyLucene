@@ -137,6 +137,11 @@ public class EasyLucene {
         return null;
     }
 
+    public List<EasyLuceneData> similaritySearch(String text, Integer number) {
+        List<EasyLuceneData> find = search(text,number);
+        return similarity(text, find);
+    }
+
     public String displayHtmlHighlight(Query query, String fieldName, String fieldContent)
             throws IOException, InvalidTokenOffsetsException {
         // 设置高亮标签,可以自定义,这里我用html将其显示为红色
@@ -219,11 +224,17 @@ public class EasyLucene {
         Collections.sort(result, new Comparator<EasyLuceneData>() {
             @Override
             public int compare(EasyLuceneData o1, EasyLuceneData o2) {
-                return (int) (o1.score - o2.score);
+                int result = 0;
+                if(o1.score < o2.score)
+                    result = 1;
+                else if(o1.score > o2.score)
+                    result = -1;
+                return result;
             }
         });
         return result;
     }
+
     public String textToWord(String text) {
         text = text.replaceAll("/", "");
         QueryParser parser = new QueryParser("", analyzer);
